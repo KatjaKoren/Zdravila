@@ -10,6 +10,7 @@ public class Cas {
     private int ura;
     private int minuta;
 
+    //test
     public Cas(int dan, int mesec, int leto, int ura, int minuta) {
         this.dan = dan;
         this.mesec = mesec;
