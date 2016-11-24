@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Zdravila</string>
+    <string name="action_settings">Settings</string>
+    <string name="opomnik">Opomnik</string>
+    <string name="zdravilo">Zdravilo:</string>
+    <string name="Zdravilo" />
+    <string name="scan">Scan</string>
+    <string name="Izbrisi_zdravilo">Izbrisi</string>
+    <string name="Shrani_zdravilo">Shrani</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>

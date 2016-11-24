@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_izbrisi_zdravilo"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="@string/Izbrisi_zdravilo"
+        app:showAsAction="always"/>
+</menu>

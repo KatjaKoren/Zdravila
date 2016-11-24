@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_margin="2dp">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.37"
+            android:layout_margin="20dp"
+            android:columnCount="2"
+            android:alignmentMode="alignMargins">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Odmerek: "
+                android:id="@+id/lblOdmerek"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical" />
+
+            <EditText
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/inp_poimenovanje"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Zdravilo:"
+                android:id="@+id/lblZdravilo"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical" />
+
+            <EditText
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/inp_kolicina"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_gravity="center_horizontal"
+                android:inputType="number"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Oblika:"
+                android:id="@+id/lblOblika"
+                android:layout_row="2"
+                android:layout_column="0"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical" />
+
+            <EditText
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/inp_oblika"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Namen:"
+                android:id="@+id/lblNamen"
+                android:layout_row="3"
+                android:layout_column="0"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Zaloga:"
+                android:id="@+id/lblStTablet"
+                android:layout_row="4"
+                android:layout_column="0"
+                android:singleLine="true"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical" />
+
+            <EditText
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/inp_namen"
+                android:layout_row="3"
+                android:layout_column="1"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp" />
+
+            <EditText
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/inp_stevilo_tbl"
+                android:layout_row="4"
+                android:layout_column="1"
+                android:layout_gravity="center_horizontal"
+                android:inputType="number"
+                android:layout_margin="5dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:text="Potrdi"
+                android:onClick="input_zdravilo"
+                android:id="@+id/btnPotrdi"
+                android:layout_row="5"
+                android:layout_column="0"
+                android:gravity="center|center_horizontal"
+                android:layout_gravity="left|center_horizontal"
+                android:layout_rowSpan="1"
+                android:layout_columnSpan="2"
+                android:background="#ffffff"
+                android:layout_margin="5dp"
+                android:textColor="@color/accent_material_light" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:text="Skeniraj kodo"
+                android:id="@+id/btn_scan"
+                android:layout_row="6"
+                android:layout_column="0"
+                android:layout_columnSpan="2"
+                android:layout_rowSpan="1"
+                android:layout_gravity="left|center_horizontal"
+                android:background="#ffffff"
+                android:layout_margin="5dp"
+                android:textColor="@color/accent_material_light" />
+
+        </GridLayout>
+
+    </ScrollView>
+
+</LinearLayout>
