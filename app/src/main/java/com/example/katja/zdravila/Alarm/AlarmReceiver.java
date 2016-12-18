@@ -17,7 +17,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         String get_your_string = intent.getExtras().getString("extra");
         Log.e("Kaj je kluč?" , get_your_string);
 
-
         // intent do ringtone service
         Intent service_intent = new Intent(context, RingtonePlayingService.class);
 
@@ -26,5 +25,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         // zažene ringtone service
         context.startService(service_intent);
+
+
     }
 }

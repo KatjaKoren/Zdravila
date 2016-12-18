@@ -8,4 +8,12 @@
     <string name="Izbrisi_zdravilo">Izbrisi</string>
     <string name="Shrani_zdravilo">Shrani</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_svetovalec">Svetovalec</string>
+    <string name="svetovalec_text">
+       "Svetovalec vam pomaga ugotoviti ali imate prehlad, gripo, angino, pljučnico ali alergijo.\n\nOznačite vse simptome, ki se nanašajo na vašo bolezen"
+    </string>
 </resources>

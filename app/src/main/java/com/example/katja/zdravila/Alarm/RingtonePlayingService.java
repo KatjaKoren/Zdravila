@@ -72,8 +72,8 @@ public class RingtonePlayingService extends Service {
             // nastavi activity, ki se odpre ko se sproži alarm
             Intent intent_pop_up = new Intent(this.getApplicationContext(), activity_alarm_pop_up.class);
             // nastavi pending intent
-            PendingIntent pending_intent_pop_up = PendingIntent.getActivity(this, 0,
-                    intent_pop_up, 0);
+            PendingIntent pending_intent_pop_up = PendingIntent.getActivity(this, 0, intent_pop_up, 0);
+
 
             // nastavi notification parametre
             Notification notification_popup = new Notification.Builder(this)
