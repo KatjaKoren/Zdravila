@@ -43,6 +43,15 @@ public class activity_Main extends AppCompatActivity {
             }
         });
 
+        Button btnWeka = (Button) findViewById(R.id.btnWeka);
+        btnWeka.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(activity_Main.this, activity_Weka.class));
+            }
+        });
+
+
     }
 
 }

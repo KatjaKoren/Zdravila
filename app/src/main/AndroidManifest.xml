@@ -50,7 +50,8 @@
         <activity
             android:name=".activity_Svetovalec"
             android:label="@string/title_activity_svetovalec"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity_Weka"></activity>
     </application>
 
 </manifest>
