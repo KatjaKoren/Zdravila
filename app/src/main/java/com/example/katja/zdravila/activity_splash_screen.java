@@ -1,7 +1,6 @@
 package com.example.katja.zdravila;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -38,3 +37,4 @@ public class activity_splash_screen extends AppCompatActivity {
         finish();
     }
 }
+

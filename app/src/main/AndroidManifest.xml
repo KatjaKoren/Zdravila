@@ -33,6 +33,7 @@
 
         <activity android:name=".Alarm.activity_alarm_pop_up" />
         <activity android:name=".Seznam_zdravil.activity_Seznam_zdravil_rv" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
@@ -42,12 +43,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.katja.zdravila.activity_Main" />
         </activity>
+
         <activity
             android:name=".activity_Svetovalec"
             android:label="@string/title_activity_svetovalec"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity_Weka" />
-        <activity android:name=".activity_splash_screen">
+
+        <activity
+            android:name=".activity_splash_screen"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -56,3 +61,4 @@
     </application>
 
 </manifest>
+

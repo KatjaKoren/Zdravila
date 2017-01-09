@@ -51,6 +51,14 @@ public class activity_Main extends AppCompatActivity {
             }
         });
 
+        Button btnSvetovalec = (Button) findViewById(R.id.btnSvetovalec);
+        btnSvetovalec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(activity_Main.this, activity_Svetovalec.class));
+            }
+        });
+
 
     }
 
