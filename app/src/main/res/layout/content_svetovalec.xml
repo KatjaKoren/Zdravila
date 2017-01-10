@@ -552,10 +552,24 @@
         </RadioGroup>
 
         <Button
+            android:text="Potrdi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_Potrdi"
+            android:background="@color/colorAccent"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:onClick="Svetovalec (activity_Svetovalec)" />
+
+        <Button
             android:text="Izbriši"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
+            android:id="@+id/buttonIzbrisi"
             android:background="@color/colorAccent"
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
@@ -563,6 +577,12 @@
             android:layout_marginRight="100dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRezultat" />
 
     </LinearLayout>
 

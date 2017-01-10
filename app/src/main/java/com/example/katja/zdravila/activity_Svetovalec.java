@@ -1,14 +1,21 @@
 package com.example.katja.zdravila;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Random;
 
 import weka.core.Attribute;
 import weka.classifiers.Evaluation;
@@ -21,7 +28,7 @@ import weka.core.Instances;
 public class activity_Svetovalec extends AppCompatActivity {
 
 
-
+    NumberPicker npvrocina;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +44,28 @@ public class activity_Svetovalec extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-
-        NumberPicker npvrocina = (NumberPicker) findViewById(R.id.numberPicker2);
+        npvrocina = (NumberPicker) findViewById(R.id.numberPicker2);
         npvrocina.setMaxValue(43);
         npvrocina.setMinValue(30);
+    }
+
+    public void Svetovalec(View v) throws Exception{
+
+        BufferedReader breader = null;
+        File desc  = new File(this.getExternalFilesDir("zdravila_data"),"symptom_check.arff");
+        FileReader reader = new FileReader(desc.getAbsolutePath());
+        breader = new BufferedReader(reader);
+
+        Instances train = new Instances(breader); // naredimo instance za trenirat
+        train.setClassIndex(train.numAttributes() - 1); // določimo razred za treniranje
+
+        breader.close();
+
+        IBk klasifikator = new IBk();
+        klasifikator.buildClassifier(train);
+        Evaluation eval = new Evaluation(train);
+        eval.crossValidateModel(klasifikator, train, 10, new Random(1));
+
 
         RadioGroup rgkaselj = (RadioGroup) findViewById(R.id.rg_kaselj);
         int st_kaselj = rgkaselj.getCheckedRadioButtonId();
@@ -84,6 +108,104 @@ public class activity_Svetovalec extends AppCompatActivity {
 
         RadioGroup rgsrbeceoci= (RadioGroup) findViewById(R.id.rg_srbece_oci);
         int st_srbeceoci = rgsrbeceoci.getCheckedRadioButtonId();
+
+        String strvrocina = (npvrocina.toString());
+
+        String strkaselj ="";
+        if(st_kaselj == 0 )
+            strkaselj = "ne";
+        if(st_kaselj == 1)
+            strkaselj = "moker";
+        if(st_kaselj == 2)
+            strkaselj = "suh";
+
+        String strgrlo="";
+        if(st_grlo == 0 )
+            strgrlo = "da";
+        if(st_grlo== 1)
+            strgrlo = "ne";
+
+        String strizcedek_nos="";
+        if(st_grlo == 0 )
+            strizcedek_nos = "da";
+        if(st_grlo== 1)
+            strizcedek_nos = "ne";
+
+        String strbolecine="";
+        if(st_bolecine == 0 )
+            strbolecine = "brez";
+        if(st_bolecine == 1)
+            strbolecine = "blaga";
+        if(st_bolecine == 2)
+            strbolecine = "mocnejsa";
+
+        String strglavobol="";
+        if(st_glavobol == 0 )
+            strglavobol = "brez";
+        if(st_glavobol == 1)
+            strglavobol ="rahel";
+        if(st_glavobol == 2)
+            strglavobol = "mocnejsi";
+
+        String strmrzlica="";
+        if(st_grlo == 0 )
+            strmrzlica = "da";
+        if(st_grlo== 1)
+            strmrzlica = "ne";
+
+        String strkihanje="";
+        if(st_grlo == 0 )
+            strkihanje = "da";
+        if(st_grlo== 1)
+            strkihanje = "ne";
+
+        String strprsnikos="";
+        if(st_grlo == 0 )
+            strprsnikos = "da";
+        if(st_grlo== 1)
+            strprsnikos = "ne";
+
+        String strutrujenost="";
+        if(st_grlo == 0 )
+            strutrujenost = "da";
+        if(st_grlo== 1)
+            strutrujenost = "ne";
+
+        String strvrtoglavica="";
+        if(st_grlo == 0 )
+            strvrtoglavica = "da";
+        if(st_grlo== 1)
+            strvrtoglavica = "ne";
+
+        String strzasoplost="";
+        if(st_grlo == 0 )
+            strzasoplost = "da";
+        if(st_grlo== 1)
+            strzasoplost = "ne";
+
+        String strpotenje="";
+        if(st_grlo == 0 )
+            strpotenje = "da";
+        if(st_grlo== 1)
+            strpotenje = "ne";
+
+        String strslabost="";
+        if(st_grlo == 0 )
+            strslabost = "da";
+        if(st_grlo== 1)
+            strslabost = "ne";
+
+        String strizpuscaji="";
+        if(st_grlo == 0 )
+            strizpuscaji = "da";
+        if(st_grlo== 1)
+            strizpuscaji = "ne";
+
+        String strsrbeceoci="";
+        if(st_grlo == 0 )
+            strsrbeceoci = "da";
+        if(st_grlo== 1)
+            strsrbeceoci = "ne";
 
         //Deklariranje atributov
 
@@ -189,108 +311,30 @@ public class activity_Svetovalec extends AppCompatActivity {
         // Določanje instance, ki jo želim napovedati
         Instances dataset = new Instances("bolezen", fvWekaAtributi, 0);
 
-        String strvrocina = (npvrocina.toString());
+        Instance instance = new DenseInstance(6);
+        instance.setValue(Vrocina,strvrocina);
+        instance.setValue(Kaselj, strkaselj);
+        instance.setValue(VnetoGrlo, strgrlo);
+        instance.setValue(IzcedekNos, strizcedek_nos);
+        instance.setValue(Bolecine,strglavobol);
+        instance.setValue(Mrzlica, strmrzlica);
+        instance.setValue(Kihanje, strkihanje);
+        instance.setValue(PrsniKos,strprsnikos);
+        instance.setValue(Utrujenost, strutrujenost);
+        instance.setValue(Vrtoglavica, strvrtoglavica);
+        instance.setValue(Zasoplost,strzasoplost);
+        instance.setValue(Potenje, strpotenje);
+        instance.setValue(Slabost, strslabost);
+        instance.setValue(Izpuscaji, strizpuscaji);
 
-        String strkaselj;
-        if(st_kaselj == 0 )
-           strkaselj = "ne";
-        if(st_kaselj == 1)
-            strkaselj = "moker";
-        if(st_kaselj == 2)
-            strkaselj = "suh";
+        dataset.add(instance);
+        dataset.setClassIndex(dataset.numAttributes()-1);
 
-        String strgrlo;
-        if(st_grlo == 0 )
-            strgrlo = "da";
-        if(st_grlo== 1)
-            strgrlo = "ne";
+        TextView txtRezultat = (TextView) findViewById(R.id.txtRezultat);
 
-        String strizcedek_nos;
-        if(st_grlo == 0 )
-            strizcedek_nos = "da";
-        if(st_grlo== 1)
-            strizcedek_nos = "ne";
-
-        String strbolecine;
-        if(st_bolecine == 0 )
-            strbolecine = "brez";
-        if(st_bolecine == 1)
-            strbolecine = "blaga";
-        if(st_bolecine == 2)
-           strbolecine = "mocnejsa";
-
-        String strglavobol;
-        if(st_glavobol == 0 )
-            strglavobol = "brez";
-        if(st_glavobol == 1)
-            strglavobol ="rahel";
-        if(st_glavobol == 2)
-            strglavobol = "mocnejsi";
-
-        String strmrzlica;
-        if(st_grlo == 0 )
-            strmrzlica = "da";
-        if(st_grlo== 1)
-            strmrzlica = "ne";
-
-        String strkihanje;
-        if(st_grlo == 0 )
-            strkihanje = "da";
-        if(st_grlo== 1)
-            strkihanje = "ne";
-
-        String strprsnikos;
-        if(st_grlo == 0 )
-            strprsnikos = "da";
-        if(st_grlo== 1)
-            strprsnikos = "ne";
-
-        String strutrujenost;
-        if(st_grlo == 0 )
-            strutrujenost = "da";
-        if(st_grlo== 1)
-            strutrujenost = "ne";
-
-        String strvrtoglavica;
-        if(st_grlo == 0 )
-            strvrtoglavica = "da";
-        if(st_grlo== 1)
-            strvrtoglavica = "ne";
-
-        String strzasoplost;
-        if(st_grlo == 0 )
-            strzasoplost = "da";
-        if(st_grlo== 1)
-            strzasoplost = "ne";
-
-        String strpotenje;
-        if(st_grlo == 0 )
-            strpotenje = "da";
-        if(st_grlo== 1)
-            strpotenje = "ne";
-
-        String strslabost;
-        if(st_grlo == 0 )
-            strslabost = "da";
-        if(st_grlo== 1)
-            strslabost = "ne";
-
-        String strizpuscaji;
-        if(st_grlo == 0 )
-            strizpuscaji = "da";
-        if(st_grlo== 1)
-            strizpuscaji = "ne";
-
-        String strsrbeceoci;
-        if(st_grlo == 0 )
-            strsrbeceoci = "da";
-        if(st_grlo== 1)
-            strsrbeceoci = "ne";
-
-        Log.e("VROCINA VRNE:", String.valueOf(npvrocina));
-        Log.e("RADIO BUTTON VRNE:", String.valueOf(st_kaselj));
+        txtRezultat.setText(strvrocina + " " +  strkaselj + " " +  strgrlo + " " +  strizcedek_nos + " " +  strmrzlica + " " +  strkihanje + " " +  strprsnikos + " " +  strutrujenost + " " +  strvrtoglavica + " " +  strzasoplost + " " +  strpotenje + " " +  strslabost + " " +  strizpuscaji);
+        /*double rezultat = klasifikator.classifyInstance(dataset.instance(0));
+        String[] strRezultat = new String[]{"prehlad","gripa","angina","pljučnica","alergija"};
+        txtRezultat.setText(strRezultat[(int)rezultat].toString());*/
     }
-
-
-
 }
