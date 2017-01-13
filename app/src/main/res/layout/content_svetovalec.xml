@@ -9,7 +9,6 @@
     tools:showIn="@layout/activity_svetovalec">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,566 +25,547 @@
             />
 
         <TextView
-            android:text="Telesna temperatura"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView"
             android:layout_marginBottom="5dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="16dp" />
+            android:text="Telesna temperatura" />
 
         <NumberPicker
-            android:layout_width="match_parent"
             android:id="@+id/numberPicker2"
-            android:scrollbarSize="5dp"
-            android:layout_height="80dp" />
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:scrollbarSize="5dp" />
 
         <TextView
-            android:text="Kašelj"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:layout_marginLeft="16dp" />
+            android:text="Kašelj" />
 
         <RadioGroup
+            android:id="@+id/rg_kaselj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rg_kaselj">
+            android:orientation='horizontal'>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_margin="5dp">
-
-                <CheckBox
-                    android:text="Brez"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox1"
-                    android:layout_weight="0.77"
-                    android:layout_marginLeft="16dp" />
-
-                <CheckBox
-                    android:text="Moker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox2"
-                    android:layout_weight="0.66" />
-
-                <CheckBox
-                    android:text="Suh"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox3"
-                    android:layout_weight="0.66" />
-
-            </LinearLayout>
-        </RadioGroup>
-
-        <TextView
-            android:text="Bolečine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="16dp" />
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_bolecine">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_margin="5dp">
-
-                <CheckBox
-                    android:text="Brez"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox4"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="16dp" />
-
-                <CheckBox
-                    android:text="Rahle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox5"
-                    android:layout_weight="1" />
-
-                <CheckBox
-                    android:text="Močne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox6"
-                    android:layout_weight="0.51" />
-
-            </LinearLayout>
-        </RadioGroup>
-
-        <TextView
-            android:text="Glavobol"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="16dp" />
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_glavobol">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_margin="5dp">
-
-                <CheckBox
-                    android:text="Brez"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox7"
-                    android:layout_weight="0.92"
-                    android:layout_marginLeft="16dp" />
-
-                <CheckBox
-                    android:text="Rahel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox8"
-                    android:layout_weight="0.93" />
-
-                <CheckBox
-                    android:text="Močan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox9"
-                    android:layout_weight="0.55" />
-
-            </LinearLayout>
-        </RadioGroup>
-
-
-        <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-            android:id="@+id/rg_grlo">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="42dp">
-
-            <TextView
-                android:text="Vneto grlo"
-                android:layout_width="107dp"
+            <RadioButton
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewGrlo"
                 android:layout_marginLeft="16dp"
-                android:layout_weight="0.07" />
+                android:layout_weight="0.77"
+                android:checked="true"
+                android:text="Brez" />
 
-            <CheckBox
-                android:text="Da"
+            <RadioButton
+                android:id="@+id/checkBox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBoxGrloDa"
-                android:layout_weight="0.35" />
+                android:layout_weight="0.66"
+                android:text="Moker" />
 
-            <CheckBox
-                android:text="Ne"
+            <RadioButton
+                android:id="@+id/checkBox3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBoxGrloNe"
-                android:layout_weight="0.29" />
-        </LinearLayout>
-    </RadioGroup>
+                android:layout_weight="0.66"
+                android:text="Suh" />
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_izcedek">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp">
-                <TextView
-                    android:text="Izcedek iz nosu / zamašen nos"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewNos"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.07" />
-                <CheckBox
-                    android:text="Da"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxNosDa"
-                    android:layout_weight="0.35" />
-
-                <CheckBox
-                    android:text="Ne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxNosNe"
-                    android:layout_weight="0.29" />
-            </LinearLayout>
         </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_mrzlica">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp">
-                <TextView
-                    android:text="Mrzlica"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewMrzlica"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.07" />
-                <CheckBox
-                    android:text="Da"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxMrzlicaDa"
-                    android:layout_weight="0.35" />
-
-                <CheckBox
-                    android:text="Ne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxMrzlicaNe"
-                    android:layout_weight="0.29" />
-            </LinearLayout>
-        </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_prsni_kos">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp">
-                <TextView
-                    android:text="Bolečine v prsnem košu"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewPrsniKos"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.07" />
-                <CheckBox
-                    android:text="Da"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxPrsnikosDa"
-                    android:layout_weight="0.35" />
-
-                <CheckBox
-                    android:text="Ne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxPrsnikosNe"
-                    android:layout_weight="0.29" />
-            </LinearLayout>
-        </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_utrujenost">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp">
-                <TextView
-                    android:text="Utrujenost"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewUtrujenost"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.07" />
-                <CheckBox
-                    android:text="Da"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxUtrujenostDa"
-                    android:layout_weight="0.35" />
-
-                <CheckBox
-                    android:text="Ne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxUtrujenostNe"
-                    android:layout_weight="0.29" />
-            </LinearLayout>
-        </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_vrtoglavica">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp">
-                <TextView
-                    android:text="Vrtoglavica"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewVrtoglavica"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.07" />
-                <CheckBox
-                    android:text="Da"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxVrtoglavicaDa"
-                    android:layout_weight="0.35" />
-
-                <CheckBox
-                    android:text="Ne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxVrtoglavicaNe"
-                    android:layout_weight="0.29" />
-            </LinearLayout>
-        </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_zasoplost">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp">
-                <TextView
-                    android:text="Zasoplost"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewZasoplost"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.07" />
-                <CheckBox
-                    android:text="Da"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxZasoplostDa"
-                    android:layout_weight="0.35" />
-
-                <CheckBox
-                    android:text="Ne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxZasoplostNe"
-                    android:layout_weight="0.29" />
-            </LinearLayout>
-        </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_potenje">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp">
-                <TextView
-                    android:text="Potenje"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewPotenjel"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.07" />
-                <CheckBox
-                    android:text="Da"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxPotenjeDa"
-                    android:layout_weight="0.35" />
-
-                <CheckBox
-                    android:text="Ne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxPotenjeNe"
-                    android:layout_weight="0.29" />
-            </LinearLayout>
-        </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_slabost">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp">
-                <TextView
-                    android:text="Slabost"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewSlabost"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.07" />
-                <CheckBox
-                    android:text="Da"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxSlabostDa"
-                    android:layout_weight="0.35" />
-
-                <CheckBox
-                    android:text="Ne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxSlabostNe"
-                    android:layout_weight="0.29" />
-            </LinearLayout>
-        </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_kihanje">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp">
-                <TextView
-                    android:text="Kihanje"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewKihanje"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.07" />
-                <CheckBox
-                    android:text="Da"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxKihanjeDa"
-                    android:layout_weight="0.35" />
-
-                <CheckBox
-                    android:text="Ne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxkihanjeNe"
-                    android:layout_weight="0.29" />
-            </LinearLayout>
-        </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_izpuscaji">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp">
-                <TextView
-                    android:text="Izpuščaji"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.07"
-                    android:id="@+id/textViewIzpuscaji" />
-                <CheckBox
-                    android:text="Da"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxIzpuscajiDa"
-                    android:layout_weight="0.35" />
-
-                <CheckBox
-                    android:text="Ne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxIzpuscajiNe"
-                    android:layout_weight="0.29" />
-            </LinearLayout>
-        </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rg_srbece_oci">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="42dp">
-                <TextView
-                    android:text="Srbeče oči"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="0.07"
-                    android:id="@+id/textViewSrbeceOci" />
-                <CheckBox
-                    android:text="Da"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxSrbece_ociDa"
-                    android:layout_weight="0.35" />
-
-                <CheckBox
-                    android:text="Ne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxSrbece_ociNe"
-                    android:layout_weight="0.29" />
-            </LinearLayout>
-        </RadioGroup>
-
-        <Button
-            android:text="Potrdi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_Potrdi"
-            android:background="@color/colorAccent"
-            android:textColor="@android:color/background_light"
-            android:textSize="18sp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"
-            android:onClick="Svetovalec (activity_Svetovalec)" />
-
-        <Button
-            android:text="Izbriši"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonIzbrisi"
-            android:background="@color/colorAccent"
-            android:textColor="@android:color/background_light"
-            android:textSize="18sp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp" />
 
         <TextView
-            android:text="TextView"
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtRezultat" />
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="Bolečine" />
+
+        <RadioGroup
+            android:id="@+id/rg_bolecine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBox4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:text="Brez"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/checkBox5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rahle" />
+
+            <RadioButton
+                android:id="@+id/checkBox6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.51"
+                android:text="Močne" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="Glavobol" />
+
+        <RadioGroup
+            android:id="@+id/rg_glavobol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBox7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="0.92"
+                android:text="Brez"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/checkBox8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.93"
+                android:text="Rahel" />
+
+            <RadioButton
+                android:id="@+id/checkBox9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:text="Močan" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewGrlo"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.07"
+            android:text="Vneto grlo" />
+
+        <RadioGroup
+            android:id="@+id/rg_grlo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxGrloDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:paddingLeft="0dp"
+                android:layout_marginLeft="16dp"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/checkBoxGrloNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewNos"
+            android:layout_width="282dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.03"
+            android:text="Izcedek iz nosu / zamašen nos" />
+
+        <RadioGroup
+            android:id="@+id/rg_izcedek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxNosDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:layout_marginLeft="16dp" />
+
+            <RadioButton
+                android:id="@+id/checkBoxNosNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewMrzlica"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.07"
+            android:text="Mrzlica" />
+
+        <RadioGroup
+            android:id="@+id/rg_mrzlica"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxMrzlicaDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:layout_marginLeft="16dp"/>
+
+            <RadioButton
+                android:id="@+id/checkBoxMrzlicaNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewPrsniKos"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.07"
+            android:text="Bolečine v prsnem košu" />
+
+        <RadioGroup
+            android:id="@+id/rg_prsni_kos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxPrsnikosDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:layout_marginLeft="16dp"/>
+
+            <RadioButton
+                android:id="@+id/checkBoxPrsnikosNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewUtrujenost"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.07"
+            android:text="Utrujenost" />
+
+        <RadioGroup
+            android:id="@+id/rg_utrujenost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxUtrujenostDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:layout_marginLeft="16dp"/>
+
+            <RadioButton
+                android:id="@+id/checkBoxUtrujenostNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewVrtoglavica"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.07"
+            android:text="Vrtoglavica"
+            />
+
+        <RadioGroup
+            android:id="@+id/rg_vrtoglavica"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxVrtoglavicaDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:layout_marginLeft="16dp"/>
+
+            <RadioButton
+                android:id="@+id/checkBoxVrtoglavicaNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewZasoplost"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.07"
+            android:text="Zasoplost" />
+
+        <RadioGroup
+            android:id="@+id/rg_zasoplost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxZasoplostDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:layout_marginLeft="16dp"/>
+
+            <RadioButton
+                android:id="@+id/checkBoxZasoplostNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewPotenjel"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.07"
+            android:text="Potenje" />
+
+        <RadioGroup
+            android:id="@+id/rg_potenje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxPotenjeDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:layout_marginLeft="16dp"/>
+
+            <RadioButton
+                android:id="@+id/checkBoxPotenjeNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewSlabost"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.07"
+            android:text="Slabost" />
+
+        <RadioGroup
+            android:id="@+id/rg_slabost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxSlabostDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:layout_marginLeft="16dp"/>
+
+            <RadioButton
+                android:id="@+id/checkBoxSlabostNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewKihanje"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.07"
+            android:text="Kihanje" />
+
+        <RadioGroup
+            android:id="@+id/rg_kihanje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxKihanjeDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:layout_marginLeft="16dp"/>
+
+            <RadioButton
+                android:id="@+id/checkBoxkihanjeNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewIzpuscaji"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.07"
+            android:text="Izpuščaji" />
+
+        <RadioGroup
+            android:id="@+id/rg_izpuscaji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxIzpuscajiDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:layout_marginLeft="16dp"/>
+
+            <RadioButton
+                android:id="@+id/checkBoxIzpuscajiNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewSrbeceOci"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.07"
+            android:text="Srbeče oči" />
+
+        <RadioGroup
+            android:id="@+id/rg_srbece_oci"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/checkBoxSrbece_ociDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="da"
+                android:layout_marginLeft="16dp"/>
+
+            <RadioButton
+                android:id="@+id/checkBoxSrbece_ociNe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:text="ne"
+                android:checked="true" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_Potrdi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorAccent"
+            android:text="Potrdi"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/buttonIzbrisi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorAccent"
+            android:text="Izbriši"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtRezultat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
 
     </LinearLayout>
-
 
 
 </android.support.v4.widget.NestedScrollView>
