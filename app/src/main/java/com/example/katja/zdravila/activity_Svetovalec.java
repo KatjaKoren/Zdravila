@@ -1,16 +1,25 @@
 package com.example.katja.zdravila;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,35 +34,94 @@ import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
 
+import static java.lang.Integer.valueOf;
+
 public class activity_Svetovalec extends AppCompatActivity {
 
 
+    RadioButton rbvnetogrlo;
+    RadioButton rbkaselj;
+    RadioButton rbnos;
+    RadioButton rbbolecine;
+    RadioButton rbglavobol;
+    RadioButton rbmrzlica;
+    RadioButton rbprsnikos;
+    RadioButton rbutrujenost;
+    RadioButton rbvrtoglavica;
+    RadioButton rbzasoplost;
+    RadioButton rbpotenje;
+    RadioButton rbslabost;
+    RadioButton rbizpuscaji;
+    RadioButton rbsrbeceoci;
+    RadioButton rbkihanje;
+
+    RadioGroup rgkaselj;
+    RadioGroup rgvnetogrlo;
+    RadioGroup rgnos;
+    RadioGroup rgbolecine;
+    RadioGroup rgglavobol;
+    RadioGroup rgmrzlica;
+    RadioGroup rgprsnikos;
+    RadioGroup rgutrujenost;
+    RadioGroup rgvrtoglavica;
+    RadioGroup rgzasoplost;
+    RadioGroup rgpotenje;
+    RadioGroup rgslabost;
+    RadioGroup rgizpuscaji;
+    RadioGroup rgsrbeceoci;
+    RadioGroup rgkihanje;
     NumberPicker npvrocina;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_svetovalec);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Button btn = (Button)findViewById(R.id.btn_Potrdi);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        npvrocina = (NumberPicker) findViewById(R.id.numberPicker2);
+        npvrocina = (NumberPicker) findViewById(R.id.npTemperatura);
         npvrocina.setMaxValue(43);
         npvrocina.setMinValue(30);
+        npvrocina.setValue(36);
+
+
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                try {
+                    svetovalec_weka();
+                }
+                catch (Exception e){
+                    System.out.println("Jebi ga "+e.toString());
+                }
+            }
+        });
+
+        rgkaselj = (RadioGroup)findViewById(R.id.rg_kaselj);
+        rgvnetogrlo = (RadioGroup) findViewById(R.id.rg_grlo);
+        rgnos = (RadioGroup) findViewById(R.id.rg_izcedek);
+        rgbolecine = (RadioGroup) findViewById(R.id.rg_bolecine);
+        rgglavobol = (RadioGroup) findViewById(R.id.rg_glavobol);
+        rgmrzlica = (RadioGroup) findViewById(R.id.rg_mrzlica);
+        rgprsnikos = (RadioGroup) findViewById(R.id.rg_prsni_kos);
+        rgutrujenost = (RadioGroup) findViewById(R.id.rg_utrujenost);
+        rgvrtoglavica = (RadioGroup) findViewById(R.id.rg_vrtoglavica);
+        rgzasoplost = (RadioGroup) findViewById(R.id.rg_zasoplost);
+        rgpotenje = (RadioGroup) findViewById(R.id.rg_potenje);
+        rgslabost = (RadioGroup) findViewById(R.id.rg_slabost);
+        rgizpuscaji = (RadioGroup) findViewById(R.id.rg_izpuscaji);
+        rgsrbeceoci= (RadioGroup) findViewById(R.id.rg_srbece_oci);
+        rgkihanje = (RadioGroup) findViewById(R.id.rg_kihanje);
     }
 
-    public void Svetovalec(View v) throws Exception{
+    public void svetovalec_weka() throws Exception{
 
         BufferedReader breader = null;
+       //Uri wekafile = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.symptom_check);
+
         File desc  = new File(this.getExternalFilesDir("zdravila_data"),"symptom_check.arff");
-        FileReader reader = new FileReader(desc.getAbsolutePath());
+        FileReader reader = new FileReader(desc);
         breader = new BufferedReader(reader);
 
         Instances train = new Instances(breader); // naredimo instance za trenirat
@@ -66,232 +134,167 @@ public class activity_Svetovalec extends AppCompatActivity {
         Evaluation eval = new Evaluation(train);
         eval.crossValidateModel(klasifikator, train, 10, new Random(1));
 
+        int st_kaselj=rgkaselj.getCheckedRadioButtonId();
+        rbkaselj=(RadioButton)findViewById(st_kaselj);
+        String strkaselj = rbkaselj.getText().toString();
 
-        RadioGroup rgkaselj = (RadioGroup) findViewById(R.id.rg_kaselj);
-        int st_kaselj = rgkaselj.getCheckedRadioButtonId();
-
-        RadioGroup rgvnetogrlo = (RadioGroup) findViewById(R.id.rg_grlo);
-        int st_grlo = rgvnetogrlo.getCheckedRadioButtonId();
-
-        RadioGroup rgnos = (RadioGroup) findViewById(R.id.rg_izcedek);
         int st_nos = rgnos.getCheckedRadioButtonId();
+        rbnos=(RadioButton)findViewById(st_nos);
+        String strizcedek_nos = rbnos.getText().toString();
 
-        RadioGroup rgbolecine = (RadioGroup) findViewById(R.id.rg_bolecine);
+        int st_grlo = rgvnetogrlo.getCheckedRadioButtonId();
+        rbvnetogrlo=(RadioButton)findViewById(st_grlo);
+        String strgrlo = rbvnetogrlo.getText().toString();
+
         int st_bolecine = rgbolecine.getCheckedRadioButtonId();
+        rbbolecine=(RadioButton)findViewById(st_bolecine);
+        String strbolecine = rbbolecine.getText().toString();
 
-        RadioGroup rgglavobol = (RadioGroup) findViewById(R.id.rg_glavobol);
         int st_glavobol = rgglavobol.getCheckedRadioButtonId();
+        rbglavobol=(RadioButton)findViewById(st_glavobol);
+        String strglavobol = rbglavobol.getText().toString();
 
-        RadioGroup rgmrzlica = (RadioGroup) findViewById(R.id.rg_mrzlica);
         int st_mrzlica = rgmrzlica.getCheckedRadioButtonId();
+        rbmrzlica=(RadioButton)findViewById(st_mrzlica);
+        String strmrzlica = rbmrzlica.getText().toString();
 
-        RadioGroup rgprsnikos = (RadioGroup) findViewById(R.id.rg_prsni_kos);
         int st_prsnikos = rgprsnikos.getCheckedRadioButtonId();
+        rbprsnikos=(RadioButton)findViewById(st_prsnikos);
+        String strprsnikos= rbprsnikos.getText().toString();
 
-        RadioGroup rgutrujenost = (RadioGroup) findViewById(R.id.rg_utrujenost);
         int st_utrujenost = rgutrujenost.getCheckedRadioButtonId();
+        rbutrujenost=(RadioButton)findViewById(st_utrujenost);
+        String strutrujenost = rbutrujenost.getText().toString();
 
-        RadioGroup rgvrtoglavica = (RadioGroup) findViewById(R.id.rg_vrtoglavica);
         int st_vrtoglavica = rgvrtoglavica.getCheckedRadioButtonId();
+        rbvrtoglavica=(RadioButton)findViewById(st_vrtoglavica);
+        String strvrtoglavica = rbvrtoglavica.getText().toString();
 
-        RadioGroup rgzasoplost = (RadioGroup) findViewById(R.id.rg_zasoplost);
         int st_zasoplost = rgzasoplost.getCheckedRadioButtonId();
+        rbzasoplost=(RadioButton)findViewById(st_zasoplost);
+        String strzasoplost = rbzasoplost.getText().toString();
 
-        RadioGroup rgpotenje = (RadioGroup) findViewById(R.id.rg_potenje);
         int st_potenje = rgpotenje.getCheckedRadioButtonId();
+        rbpotenje=(RadioButton)findViewById(st_potenje);
+        String strpotenje = rbpotenje.getText().toString();
 
-        RadioGroup rgslabost = (RadioGroup) findViewById(R.id.rg_slabost);
         int st_slabost = rgslabost.getCheckedRadioButtonId();
+        rbslabost=(RadioButton)findViewById(st_slabost);
+        String strslabost = rbslabost.getText().toString();
 
-        RadioGroup rgizpuscaji = (RadioGroup) findViewById(R.id.rg_izpuscaji);
         int st_izpuscaji = rgizpuscaji.getCheckedRadioButtonId();
+        rbizpuscaji=(RadioButton)findViewById(st_izpuscaji);
+        String strizpuscaji = rbizpuscaji.getText().toString();
 
-        RadioGroup rgsrbeceoci= (RadioGroup) findViewById(R.id.rg_srbece_oci);
         int st_srbeceoci = rgsrbeceoci.getCheckedRadioButtonId();
+        rbsrbeceoci=(RadioButton)findViewById(st_srbeceoci);
+        String strsrbeceoci = rbsrbeceoci.getText().toString();
 
-        String strvrocina = (npvrocina.toString());
+        int st_kihanje = rgkihanje.getCheckedRadioButtonId();
+        rbkihanje=(RadioButton)findViewById(st_kihanje);
+        String strkihanje = rbkihanje.getText().toString();
 
-        String strkaselj ="";
-        if(st_kaselj == 0 )
-            strkaselj = "ne";
-        if(st_kaselj == 1)
-            strkaselj = "moker";
-        if(st_kaselj == 2)
-            strkaselj = "suh";
-
-        String strgrlo="";
-        if(st_grlo == 0 )
-            strgrlo = "da";
-        if(st_grlo== 1)
-            strgrlo = "ne";
-
-        String strizcedek_nos="";
-        if(st_grlo == 0 )
-            strizcedek_nos = "da";
-        if(st_grlo== 1)
-            strizcedek_nos = "ne";
-
-        String strbolecine="";
-        if(st_bolecine == 0 )
-            strbolecine = "brez";
-        if(st_bolecine == 1)
-            strbolecine = "blaga";
-        if(st_bolecine == 2)
-            strbolecine = "mocnejsa";
-
-        String strglavobol="";
-        if(st_glavobol == 0 )
-            strglavobol = "brez";
-        if(st_glavobol == 1)
-            strglavobol ="rahel";
-        if(st_glavobol == 2)
-            strglavobol = "mocnejsi";
-
-        String strmrzlica="";
-        if(st_grlo == 0 )
-            strmrzlica = "da";
-        if(st_grlo== 1)
-            strmrzlica = "ne";
-
-        String strkihanje="";
-        if(st_grlo == 0 )
-            strkihanje = "da";
-        if(st_grlo== 1)
-            strkihanje = "ne";
-
-        String strprsnikos="";
-        if(st_grlo == 0 )
-            strprsnikos = "da";
-        if(st_grlo== 1)
-            strprsnikos = "ne";
-
-        String strutrujenost="";
-        if(st_grlo == 0 )
-            strutrujenost = "da";
-        if(st_grlo== 1)
-            strutrujenost = "ne";
-
-        String strvrtoglavica="";
-        if(st_grlo == 0 )
-            strvrtoglavica = "da";
-        if(st_grlo== 1)
-            strvrtoglavica = "ne";
-
-        String strzasoplost="";
-        if(st_grlo == 0 )
-            strzasoplost = "da";
-        if(st_grlo== 1)
-            strzasoplost = "ne";
-
-        String strpotenje="";
-        if(st_grlo == 0 )
-            strpotenje = "da";
-        if(st_grlo== 1)
-            strpotenje = "ne";
-
-        String strslabost="";
-        if(st_grlo == 0 )
-            strslabost = "da";
-        if(st_grlo== 1)
-            strslabost = "ne";
-
-        String strizpuscaji="";
-        if(st_grlo == 0 )
-            strizpuscaji = "da";
-        if(st_grlo== 1)
-            strizpuscaji = "ne";
-
-        String strsrbeceoci="";
-        if(st_grlo == 0 )
-            strsrbeceoci = "da";
-        if(st_grlo== 1)
-            strsrbeceoci = "ne";
-
+        Integer strvrocina = npvrocina.getValue();
+        
         //Deklariranje atributov
 
         Attribute Vrocina = new Attribute("Vrocina");
-        Attribute Kaselj = new Attribute("Kaselj");
-        Attribute VnetoGrlo = new Attribute("Vneto grlo");
-        Attribute IzcedekNos = new Attribute("Izcedek iz nosu ali zamasen nos");
-        Attribute Bolecine = new Attribute("Bolecine");
-        Attribute Glavobol = new Attribute("Glavobol");
-        Attribute Mrzlica = new Attribute("Mrzlica");
-        Attribute Kihanje = new Attribute("Kihanje");
-        Attribute PrsniKos = new Attribute("Bolecina v prsnem kosu");
-        Attribute Utrujenost = new Attribute("Utrujenost");
-        Attribute Vrtoglavica = new Attribute("Vrtoglavica");
-        Attribute Zasoplost = new Attribute("Zasoplost");
-        Attribute Potenje = new Attribute("Potenje");
-        Attribute Slabost = new Attribute("Slabost");
-        Attribute Izpuscaji = new Attribute("Izpuscaji");
-        Attribute SrbeceOci = new Attribute("Srbece oci");
-
 
         FastVector fvkaselj = new FastVector(3);
         fvkaselj.addElement("ne");
         fvkaselj.addElement("moker");
         fvkaselj.addElement("suh");
+        Attribute Kaselj = new Attribute("Kaselj",fvkaselj);
 
         FastVector fvgrlo = new FastVector(2);
         fvgrlo.addElement("da");
         fvgrlo.addElement("ne");
+        Attribute VnetoGrlo = new Attribute("Vneto grlo", fvgrlo);
 
         FastVector fvizcedeknos = new FastVector(2);
         fvizcedeknos.addElement("da");
         fvizcedeknos.addElement("ne");
+        Attribute IzcedekNos = new Attribute("Izcedek iz nosu ali zamasen nos", fvizcedeknos);
 
         FastVector fvbolecine = new FastVector(3);
-        fvgrlo.addElement("brez");
-        fvgrlo.addElement("blaga");
-        fvgrlo.addElement("mocnejsa");
+        fvbolecine.addElement("brez");
+        fvbolecine.addElement("blaga");
+        fvbolecine.addElement("mocnejsa");
+        Attribute Bolecine = new Attribute("Bolecine", fvbolecine);
 
         FastVector fvglavobol = new FastVector(3);
         fvglavobol.addElement("brez");
-        fvglavobol.addElement("blaga");
-        fvglavobol.addElement("mocnejsa");
+        fvglavobol.addElement("rahel");
+        fvglavobol.addElement("mocnejsi");
+        Attribute Glavobol = new Attribute("Glavobol", fvglavobol);
 
         FastVector fvmrzlica = new FastVector(2);
         fvmrzlica.addElement("da");
         fvmrzlica.addElement("ne");
+        Attribute Mrzlica = new Attribute("Mrzlica", fvmrzlica);
 
         FastVector fvkihanje = new FastVector(2);
         fvkihanje.addElement("da");
         fvkihanje.addElement("ne");
+        Attribute Kihanje = new Attribute("Kihanje", fvkihanje);
 
         FastVector fvprsnikos = new FastVector(2);
         fvprsnikos.addElement("da");
         fvprsnikos.addElement("ne");
+        Attribute PrsniKos = new Attribute("Bolecina v prsnem kosu",fvprsnikos);
 
         FastVector fvutrujenost = new FastVector(2);
         fvutrujenost.addElement("da");
         fvutrujenost.addElement("ne");
+        Attribute Utrujenost = new Attribute("Utrujenost", fvutrujenost);
 
         FastVector fvvrtoglavica = new FastVector(2);
         fvvrtoglavica.addElement("da");
         fvvrtoglavica.addElement("ne");
+        Attribute Vrtoglavica = new Attribute("Vrtoglavica", fvvrtoglavica);
+
 
         FastVector fvzasoplost = new FastVector(2);
         fvzasoplost.addElement("da");
         fvzasoplost.addElement("ne");
+        Attribute Zasoplost = new Attribute("Zasoplost", fvzasoplost);
+
 
         FastVector fvpotenje = new FastVector(2);
         fvpotenje.addElement("da");
         fvpotenje.addElement("ne");
+        Attribute Potenje = new Attribute("Potenje", fvpotenje);
+
 
         FastVector fvslabost = new FastVector(2);
         fvslabost.addElement("da");
         fvslabost.addElement("ne");
+        Attribute Slabost = new Attribute("Slabost", fvslabost);
+
 
         FastVector fvizpuscaji = new FastVector(2);
         fvizpuscaji.addElement("da");
         fvizpuscaji.addElement("ne");
+        Attribute Izpuscaji = new Attribute("Izpuscaji", fvizpuscaji);
+
 
         FastVector fvsrbeceoci = new FastVector(2);
         fvsrbeceoci.addElement("da");
         fvsrbeceoci.addElement("ne");
+        Attribute SrbeceOci = new Attribute("Srbece oci", fvsrbeceoci);
 
 
-        FastVector fvWekaAtributi = new FastVector(16);
+        // KLAS KI GA ŽELIM NAPOVEDATI
+        weka.core.FastVector fvBolezen = new FastVector(3);
+        fvBolezen.addElement("prehlad");
+        fvBolezen.addElement("gripa");
+        fvBolezen.addElement("angina");
+        fvBolezen.addElement("pljucnica");
+        fvBolezen.addElement("alergija");
+        Attribute Bolezen = new Attribute("bolezen",fvBolezen);
+
+
+        FastVector fvWekaAtributi = new FastVector(17);
         fvWekaAtributi.addElement(Vrocina);
         fvWekaAtributi.addElement(Kaselj);
         fvWekaAtributi.addElement(VnetoGrlo);
@@ -307,16 +310,19 @@ public class activity_Svetovalec extends AppCompatActivity {
         fvWekaAtributi.addElement(Potenje);
         fvWekaAtributi.addElement(Slabost);
         fvWekaAtributi.addElement(Izpuscaji);
+        fvWekaAtributi.addElement(SrbeceOci);
+        fvWekaAtributi.addElement(Bolezen);
 
         // Določanje instance, ki jo želim napovedati
         Instances dataset = new Instances("bolezen", fvWekaAtributi, 0);
 
-        Instance instance = new DenseInstance(6);
+        Instance instance = new DenseInstance(16);
         instance.setValue(Vrocina,strvrocina);
         instance.setValue(Kaselj, strkaselj);
         instance.setValue(VnetoGrlo, strgrlo);
         instance.setValue(IzcedekNos, strizcedek_nos);
-        instance.setValue(Bolecine,strglavobol);
+        instance.setValue(Bolecine,strbolecine);
+        instance.setValue(Glavobol,strglavobol);
         instance.setValue(Mrzlica, strmrzlica);
         instance.setValue(Kihanje, strkihanje);
         instance.setValue(PrsniKos,strprsnikos);
@@ -326,15 +332,21 @@ public class activity_Svetovalec extends AppCompatActivity {
         instance.setValue(Potenje, strpotenje);
         instance.setValue(Slabost, strslabost);
         instance.setValue(Izpuscaji, strizpuscaji);
+        instance.setValue(SrbeceOci, strsrbeceoci);
 
         dataset.add(instance);
         dataset.setClassIndex(dataset.numAttributes()-1);
 
-        TextView txtRezultat = (TextView) findViewById(R.id.txtRezultat);
-
-        txtRezultat.setText(strvrocina + " " +  strkaselj + " " +  strgrlo + " " +  strizcedek_nos + " " +  strmrzlica + " " +  strkihanje + " " +  strprsnikos + " " +  strutrujenost + " " +  strvrtoglavica + " " +  strzasoplost + " " +  strpotenje + " " +  strslabost + " " +  strizpuscaji);
-        /*double rezultat = klasifikator.classifyInstance(dataset.instance(0));
+        double rezultat = klasifikator.classifyInstance(dataset.instance(0));
         String[] strRezultat = new String[]{"prehlad","gripa","angina","pljučnica","alergija"};
-        txtRezultat.setText(strRezultat[(int)rezultat].toString());*/
+        String strrezultat2 = new String(strRezultat[(int)rezultat]);
+        String strStavek = new String();
+        strStavek ="Verjetno imate " + strrezultat2.toString() + ".";
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        //toast.makeText(activity_Svetovalec.this,strRezultat[(int)rezultat].toString(),Toast.LENGTH_LONG).show();
+        toast.makeText(activity_Svetovalec.this,strStavek,Toast.LENGTH_LONG).show();
+
     }
 }
